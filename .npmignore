@@ -1,0 +1,9 @@
+# source
+/source
+/example
+
+# config files
+.npmignore
+.babelrc
+.eslintrc
+.idea
