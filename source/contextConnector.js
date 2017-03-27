@@ -56,6 +56,7 @@ function createContextConnector (storeName, wrappedComponent, { emitCallbackMap 
     }
 
     componentWillUnmount () {
+      this.batchedState = null // prevent batchUpdate call setState
       onUnmount && onUnmount(this)
       this.unsubscribeList.forEach((unsubscribe) => unsubscribe())
     }
