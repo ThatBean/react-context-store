@@ -24,29 +24,17 @@ const composeSelectorList = (selectorList) => selectorList.reduce((preList, sele
 const composeKey = (keyFragList) => `@@|${keyFragList.join('|')}`
 
 class KeySwitch {
-  constructor () {
-    this.keyMap = {} // {String} - {value}
-  }
+  constructor () { this.keyMap = {} } // {String} - {value}
 
-  set (keyList, value) {
-    keyList.forEach((key) => (this.keyMap[ key ] = value))
-  }
+  set (keyList, value) { keyList.forEach((key) => (this.keyMap[ key ] = value)) }
 
-  SET (selectorList, value) {
-    this.set(composeSelectorList(selectorList), value)
-  }
+  SET (selectorList, value) { this.set(composeSelectorList(selectorList), value) }
 
-  get (key) {
-    return this.keyMap[ key ] || null
-  }
+  get (key) { return this.keyMap[ key ] || null }
 
-  GET (...fragList) {
-    return this.get(composeKey(fragList))
-  }
+  GET (...fragList) { return this.get(composeKey(fragList)) }
 
-  check (keyList, value) {
-    return keyList.length && keyList.every((key) => this.keyMap[ key ] === value)
-  }
+  check (keyList, value) { return keyList.length && keyList.every((key) => this.keyMap[ key ] === value) }
 }
 
 export {
