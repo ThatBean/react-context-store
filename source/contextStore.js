@@ -1,4 +1,4 @@
-import { PropTypes } from 'react'
+import PropTypes from 'prop-types'
 
 const contextStoreShapeTypes = PropTypes.shape({
   getState: PropTypes.func.isRequired,

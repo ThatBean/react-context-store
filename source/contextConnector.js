@@ -1,4 +1,5 @@
-import { Component, PropTypes, createElement } from 'react'
+import { PureComponent, createElement } from 'react'
+import PropTypes from 'prop-types'
 import { contextStoreShapeTypes } from './contextStore'
 import { getRandomId } from './utils'
 
@@ -6,7 +7,7 @@ import { getRandomId } from './utils'
  * create a wrapper component to interact with ContextProvider and pass state down as props
  */
 function createContextConnector (storeName, wrappedComponent, { emitCallbackMap = {}, onConstruct, onMount, onUnmount }) {
-  return class ContextConnector extends Component {
+  return class ContextConnector extends PureComponent {
     static propTypes = {
       id: PropTypes.string
     }

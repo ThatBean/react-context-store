@@ -1,4 +1,5 @@
-import { Component, PropTypes, Children } from 'react'
+import { PureComponent, Children } from 'react'
+import PropTypes from 'prop-types'
 import { contextStoreShapeTypes } from './contextStore'
 import { requestAnimationFrame } from './utils'
 
@@ -6,7 +7,7 @@ import { requestAnimationFrame } from './utils'
  * provide store as context
  */
 const createContextProvider = (storeName) => {
-  return class ContextProvider extends Component {
+  return class ContextProvider extends PureComponent {
     static propTypes = {
       store: contextStoreShapeTypes.isRequired,
       children: PropTypes.element.isRequired
