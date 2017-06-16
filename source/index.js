@@ -4,6 +4,7 @@ export { createContextConnector } from './contextConnector'
 export {
   now,
   requestAnimationFrame,
+  cancelAnimationFrame,
   getRandomInt,
   getRandomId,
   composeSelectorList,

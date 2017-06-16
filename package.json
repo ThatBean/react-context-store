@@ -1,6 +1,6 @@
 {
   "name": "react-context-store",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "thatbean",
   "license": "MIT",
   "description": "Make use of React context with: ContextProvider, ContextConnector and ContextStore",
@@ -19,7 +19,7 @@
   "scripts": {
     "build": "cross-env babel source --out-dir library",
     "build-dev": "cross-env babel source --out-dir library -w",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": "*",

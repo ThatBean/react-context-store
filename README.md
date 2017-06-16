@@ -11,6 +11,7 @@ export {
 
   now,
   requestAnimationFrame,
+  cancelAnimationFrame,
   getRandomInt,
   getRandomId,
   composeSelectorList,

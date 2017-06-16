@@ -8,6 +8,11 @@ const requestAnimationFrame = window.requestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   ((callback) => window.setTimeout(callback, Math.ceil(16 - now() % 16))) // expected to batch callback at about every 16 msec
 
+const cancelAnimationFrame = window.cancelAnimationFrame ||
+  window.webkitCancelAnimationFrame ||
+  window.mozCancelAnimationFrame ||
+  ((requestID) => window.clearTimeout(requestID)) // expected to batch callback at about every 16 msec
+
 function getRandomInt (from, to) { return Math.floor(Math.random() * (to - from + 1) + from) }
 function getRandomId (prefix = '') { return `${prefix}${Date.now().toString(36)}-${Math.random().toString(36).substr(2, 10)}` }
 
@@ -40,6 +45,7 @@ class KeySwitch {
 export {
   now,
   requestAnimationFrame,
+  cancelAnimationFrame,
   getRandomInt,
   getRandomId,
   composeSelectorList,
