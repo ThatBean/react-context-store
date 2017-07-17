@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import { contextStoreShapeTypes } from './contextStore'
 import { getRandomId } from './utils'
 
-/**
- * create a wrapper component to interact with ContextProvider and pass state down as props
- */
-const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap = {}, onConstruct, onMount, onUnmount }) => class ContextConnector extends PureComponent {
+// create a wrapper component to interact with ContextProvider and pass state down as props
+const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap = {}, onMount, onUnmount }) => class ContextConnector extends PureComponent {
   static propTypes = {
     id: PropTypes.string
   }
@@ -20,32 +18,32 @@ const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap =
     super(props, context)
 
     this.onEmit = this.onEmit.bind(this)
+
+    this.wrappedRef = null
     this.getWrappedRef = () => this.wrappedRef
     this.setWrappedRef = (ref) => (this.wrappedRef = ref)
 
-    this.store = this.context[ storeName ]
-    this.batchUpdate = this.context[ `${storeName}BatchUpdate` ]
     this.batchedState = null
+    this.getCurrentState = () => (this.batchedState || this.state)
     this.setBatchedState = () => {
       this.batchedState && this.setState(this.batchedState)
       this.batchedState = null
     }
-    this.getCurrentState = () => (this.batchedState || this.state)
-    this.wrappedRef = null
-    this.state = { // NOTE: may add user defined state in onEmit - batchUpdate
-      id: props.id || getRandomId()
-    }
 
-    onConstruct && onConstruct(this)
+    this.store = this.context[ storeName ]
+    this.batchUpdate = this.context[ `${storeName}BatchUpdate` ]
+
+    this.state = { id: props.id || getRandomId() }
   }
 
   onEmit (emitType, emitState) {
     const emitCallback = emitCallbackMap[ emitType ]
     if (!emitCallback) return
+
     const currentState = this.getCurrentState()
     const state = emitCallback(currentState, emitState, this) // like a Redux reducer
     if (!state || state === currentState) return
-    // this.batchedState || console.log(emitType) // batch once
+
     this.batchedState || this.batchUpdate(this.setBatchedState) // batch once
     this.batchedState = state
   }
@@ -61,9 +59,7 @@ const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap =
     this.unsubscribeList.forEach((unsubscribe) => unsubscribe())
   }
 
-  render () {
-    return createElement(wrappedComponent, { ...this.props, ...this.state, ref: this.setWrappedRef })
-  }
+  render () { return createElement(wrappedComponent, { ...this.props, ...this.state, ref: this.setWrappedRef }) }
 }
 
 export {

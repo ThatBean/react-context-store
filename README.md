@@ -9,10 +9,8 @@ export {
   createContextProvider, // React Component
   createContextConnector, // React Component
 
-  now,
   requestAnimationFrame,
   cancelAnimationFrame,
-  getRandomInt,
   getRandomId,
   composeSelectorList,
   composeKey,

@@ -1,6 +1,6 @@
 {
   "name": "react-context-store",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "thatbean",
   "license": "MIT",
   "description": "Make use of React context with: ContextProvider, ContextConnector and ContextStore",
@@ -32,14 +32,14 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-require": "^1.0.1",
-    "cross-env": "^4.0.0",
-    "eslint": "^3.19.0",
+    "cross-env": "^5.0.1",
+    "eslint": "^4.2.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-config-standard-react": "^4.0.2",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.2",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-react": "^6.7.1",
+    "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1"
   }
 }
