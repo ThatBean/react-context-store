@@ -10,6 +10,8 @@ const cancelAnimationFrame = window.cancelAnimationFrame ||
 
 const getRandomId = (prefix = '') => `${prefix}${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`
 
+const checkIsStatelessComponent = (component) => typeof (component) === 'string' || !component.prototype || !component.prototype.render
+
 const toArray = (value) => (value instanceof Array ? value : value ? [ value ] : [])
 
 const composeSelectorList = (selectorList) => selectorList.reduce((preList, selector) => {
@@ -40,6 +42,7 @@ export {
   requestAnimationFrame,
   cancelAnimationFrame,
   getRandomId,
+  checkIsStatelessComponent,
   composeSelectorList,
   composeKey,
   KeySwitch

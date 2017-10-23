@@ -1,7 +1,7 @@
 import { PureComponent, createElement } from 'react'
 import PropTypes from 'prop-types'
 import { contextStoreShapeTypes } from './contextStore'
-import { getRandomId } from './utils'
+import { getRandomId, checkIsStatelessComponent } from './utils'
 
 // create a wrapper component to interact with ContextProvider and pass state down as props
 const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap = {}, onMount, onUnmount }) => class ContextConnector extends PureComponent {
@@ -19,9 +19,10 @@ const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap =
 
     this.onEmit = this.onEmit.bind(this)
 
-    this.wrappedRef = null
-    this.getWrappedRef = () => this.wrappedRef
-    this.setWrappedRef = (ref) => (this.wrappedRef = ref)
+    const isStatelessComponent = checkIsStatelessComponent(wrappedComponent)
+    let wrappedRef = null
+    this.getWrappedRef = isStatelessComponent ? null : () => wrappedRef
+    this.setWrappedRef = isStatelessComponent ? null : (ref) => (wrappedRef = ref)
 
     this.batchedState = null
     this.getCurrentState = () => (this.batchedState || this.state)

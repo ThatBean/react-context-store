@@ -3,17 +3,18 @@
 **React package is required**
 
 Provides:
-```js
-export {
-  createContextStore, // Redux-like store
-  createContextProvider, // React Component
-  createContextConnector, // React Component
 
+```js
+export { createContextStore, contextStoreShapeTypes } from './contextStore'
+export { createContextProvider } from './contextProvider'
+export { createContextConnector } from './contextConnector'
+export {
   requestAnimationFrame,
   cancelAnimationFrame,
   getRandomId,
+  checkIsStatelessComponent,
   composeSelectorList,
   composeKey,
   KeySwitch
-}
+} from './utils'
 ```

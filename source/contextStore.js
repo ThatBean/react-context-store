@@ -48,7 +48,4 @@ const createContextStore = ({ initialState, reducer }, onDispatch) => {
   }
 }
 
-export {
-  createContextStore,
-  contextStoreShapeTypes
-}
+export { createContextStore, contextStoreShapeTypes }
