@@ -10,8 +10,8 @@ const createContextConnector = (storeName, wrappedComponent, { emitCallbackMap =
   }
 
   static contextTypes = {
-    [storeName]: contextStoreShapeTypes.isRequired,
-    [`${storeName}BatchUpdate`]: PropTypes.func.isRequired
+    [ storeName ]: contextStoreShapeTypes.isRequired,
+    [ `${storeName}BatchUpdate` ]: PropTypes.func.isRequired
   }
 
   constructor (props, context) {

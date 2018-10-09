@@ -8,7 +8,7 @@ node_modules
 # WebStorm config
 .idea
 
-# generated
-/library
-/module
+# distribute file
+**/*-gitignore/**
+**/*-gitignore*
 /*.tgz

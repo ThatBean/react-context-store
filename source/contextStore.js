@@ -24,7 +24,7 @@ const createContextStore = ({ initialState, reducer }, onDispatch) => {
 
   const emit = (emitType, emitState) => {
     const listenerList = listenerState[ emitType ]
-    // __DEV__ && !listenerList && console.log('missed emit', emitType, emitState)
+    __DEV__ && !listenerList && console.log('missed emit', emitType, emitState)
     listenerList && listenerList.forEach((listener) => listener(emitType, emitState))
   }
 

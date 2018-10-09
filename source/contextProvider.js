@@ -11,8 +11,8 @@ const createContextProvider = (storeName) => class ContextProvider extends Compo
   }
 
   static childContextTypes = {
-    [storeName]: contextStoreShapeTypes.isRequired,
-    [`${storeName}BatchUpdate`]: PropTypes.func.isRequired
+    [ storeName ]: contextStoreShapeTypes.isRequired,
+    [ `${storeName}BatchUpdate` ]: PropTypes.func.isRequired
   }
 
   constructor (props, context) {
@@ -30,8 +30,8 @@ const createContextProvider = (storeName) => class ContextProvider extends Compo
     }
 
     this.childContext = {
-      [storeName]: this.props.store,
-      [`${storeName}BatchUpdate`]: this.batchUpdate
+      [ storeName ]: this.props.store,
+      [ `${storeName}BatchUpdate` ]: this.batchUpdate
     }
 
     this.state = { isBatched: false }

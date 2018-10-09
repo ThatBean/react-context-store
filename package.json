@@ -1,6 +1,6 @@
 {
   "name": "react-context-store",
-  "version": "0.1.0",
+  "version": "0.2.0-dev.0",
   "author": "thatbean",
   "license": "MIT",
   "description": "Make use of React context with: ContextProvider, ContextConnector and ContextStore",
@@ -11,24 +11,30 @@
     "context",
     "react"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thatbean/react-context-store.git"
+  "repository": "github:thatbean/react-context-store",
+  "main": "library/index.js",
+  "scripts": {
+    "// script ======================": "",
+    "script-base": "babel-node ./script quiet",
+    "script-pack": "babel-node ./script quiet pack",
+    "script-publish": "babel-node ./script pack publish",
+    "script-publish-dev": "babel-node ./script pack publish-dev",
+    "script-generate-spec": "babel-node ./script/generateSpec",
+    "// build =======================": "",
+    "build-library": "babel ./source --out-dir ./output-gitignore/library",
+    "build-library-dev": "cross-env BABEL_ENV=dev npm run build-library -- --watch",
+    "// =============================": "",
+    "prepack": "echo \"Error: pack with script-*\" && exit 1"
   },
   "peerDependencies": {
-    "react": "*",
-    "prop-types": "*"
+    "react": "^16",
+    "prop-types": "^15"
   },
   "devDependencies": {
-    "dev-dep-babel-react": "^0.0.5"
-  },
-  "main": "library/index.js",
-  "module": "module/index.js",
-  "scripts": {
-    "library": "cross-env NODE_ENV=production BABEL_ENV=library babel ./source --out-dir ./library",
-    "library-dev": "cross-env NODE_ENV=development BABEL_ENV=library babel ./source --out-dir ./library --watch",
-    "module": "cross-env NODE_ENV=production BABEL_ENV=module babel ./source --out-dir ./module",
-    "build": "npm run library && npm run module",
-    "prepare": "npm run build"
+    "dr-dev": "0.0.6-dev.3",
+    "dr-dev-babel-react": "0.0.6-dev.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "prop-types": "^15.7.2"
   }
 }
